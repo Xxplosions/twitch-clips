@@ -1,0 +1,2 @@
+.player[data-branding=true] .player-button--twitch,
+.player[data-showinfo=true] .player-controls-top {display:none !important;}
