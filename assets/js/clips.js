@@ -40,19 +40,3 @@ function timeDifference(previous) {
     }
     return false
 }
-
-//set the css3 blur to an element
-function blurElement(element, size, timeout) {
-    var filterVal = 'blur(' + size + 'px)';
-    $(element).css({
-        'filter':filterVal,
-        'webkitFilter':filterVal,
-        'mozFilter':filterVal,
-        'oFilter':filterVal,
-        'msFilter':filterVal,
-        'transition':'all 0.5s ease-out',
-        '-webkit-transition':'all 0.5s ease-out',
-        '-moz-transition':'all 0.5s ease-out',
-        '-o-transition':'all 0.5s ease-out'
-    });
-}
