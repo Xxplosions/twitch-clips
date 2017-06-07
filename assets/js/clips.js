@@ -15,14 +15,15 @@ $.ajax({
         console.log(createdTime);
 
         var fiveSecondsAgo = timeDifference(createdTime);
+        var clipPlaceholder = $('.clip-placeholder');
         if(fiveSecondsAgo) {
             var embed = clip.embed_html;
-            $('.clip-placeholder').append(embed);
-            $('.clip-placeholder iframe').attr("id", "twitch-iframe");
-
-            $("#twitch-iframe").on('load', function(){
-                console.log($("#twitch-iframe").contents())
-            })
+            clipPlaceholder.hide();
+            clipPlaceholder.append(embed);
+            var duration = clip.duration;
+            var fadeInDuration = 3300;
+            clipPlaceholder.delay(fadeInDuration).fadeIn(1000);
+            clipPlaceholder.delay(duration*1000 - (fadeInDuration + 100)).hide(0);
         }
     }
 });
@@ -38,4 +39,20 @@ function timeDifference(previous) {
         }
     }
     return false
+}
+
+//set the css3 blur to an element
+function blurElement(element, size, timeout) {
+    var filterVal = 'blur(' + size + 'px)';
+    $(element).css({
+        'filter':filterVal,
+        'webkitFilter':filterVal,
+        'mozFilter':filterVal,
+        'oFilter':filterVal,
+        'msFilter':filterVal,
+        'transition':'all 0.5s ease-out',
+        '-webkit-transition':'all 0.5s ease-out',
+        '-moz-transition':'all 0.5s ease-out',
+        '-o-transition':'all 0.5s ease-out'
+    });
 }
